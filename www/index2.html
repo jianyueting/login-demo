@@ -21,9 +21,11 @@
         $.ajax({
             url: "http://localhost:8080/demo/verify?code="+vcode,
             type: 'GET',
+            /*
             xhrFields: {
                 withCredentials: true
             },
+            */
             success: function (result) {
                 //弹窗显示信息
                 alert(result.msg);
