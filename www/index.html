@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" >
+    <title>验证码</title>
+    <h2>验证码</h2>
+    <img border=0 src="http://localhost:8080/demo/code" id="imageMask" onclick="reloadCode()" style="cursor: pointer">
+    <br/>
+    <input type="text" id="signcode"/>
+    <button value="提交" onclick="checkCode()"  style="height: 20px;width: 60px"/>提交
+</head>
+<body>
+<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+    function reloadCode() {
+        $("#imageMask").attr("src","http://localhost:8080/demo/code?t="+new Date().getMilliseconds())
+    }
+
+    function checkCode() {
+        var vcode = $('#signcode').val();
+        $.ajax({
+            url: "http://localhost:8080/demo/verify?code="+vcode,
+            type: 'GET',
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function (result) {
+                if(result.code==0){
+                    alert("成功");
+                }
+            }
+        })
+    }
+</script>
+</body>
+</html>
