@@ -7,6 +7,14 @@
 1. html页面中ajax请求要增加参数xhrFields: {withCredentials: true}，保持session的传递性。
 2. 后端服务要处理跨域
 
+页面使用axios的，可以直接配置withCredentials，示例如下：
+
+```js
+Vue.prototype.$axios = axios
+axios.defaults.withCredentials =true;
+```
+
+
 脚本文件说明如下：
 
 |脚本名|说明|
